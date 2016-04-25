@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/imagej/imagej.iml" filepath="$PROJECT_DIR$/imagej/imagej.iml" />
+      <module fileurl="file://$PROJECT_DIR$/testplugin/testplugin.iml" filepath="$PROJECT_DIR$/testplugin/testplugin.iml" />
+    </modules>
+  </component>
+</project>
