@@ -3,7 +3,7 @@
   */
 
 import ij._
-import ij.plugin.{Duplicator => DC, Filters3D => F3D, ImageCalculator => ICAL, ContrastEnhancer => CE, GaussianBlur3D => GB3D}
+import ij.plugin.{ZProjector =>ZP, ContrastEnhancer => CE, Duplicator => DC, Filters3D => F3D, GaussianBlur3D => GB3D, ImageCalculator => ICAL}
 import ij.process.{ImageProcessor, ImageConverter => ICON}
 import org.bytedeco.javacpp.opencv_core._
 import org.bytedeco.javacpp.opencv_highgui._
@@ -19,9 +19,10 @@ class testscala1_ extends plugin.PlugIn {
     gd.addNumericField("ry:", 5.0, 1)
     gd.addNumericField("rz:", 5.0, 1)
     gd.addChoice("threshold method:", Array("Default", "Huang", "Intermodes", "IsoData", "Li", "MaxEntropy", "Mean", "MinError(I)", "Minimum", "Moments", "Otsu", "Percentile", "RenyiEntropy", "Shanbhag", "Triangle", "Yen"), "Shanbhag")
-    gd.addChoice("filter method:", Array("MEAN", "MEDIAN", "MIN", "MAX", "VAR", "MAXLOCAL", "GAUSSIAN"), "MEDIAN")
+    gd.addChoice("filter method:", Array("MEAN", "MEDIAN", "MIN", "MAX", "VAR", "MAXLOCAL", "GAUSSIAN"), "GAUSSIAN")
     gd.addCheckbox("create new window", false)
-    gd.addNumericField("slices:", 8.0, 1)
+    gd.addCheckbox("enhance contrast", false)
+    //gd.addNumericField("slices:", 8.0, 1)
     gd.showDialog
 
     if (!gd.wasCanceled) {
@@ -34,13 +35,14 @@ class testscala1_ extends plugin.PlugIn {
 
       dellight(imp1, gd.getNextChoice)
 
-      enhancecont(imp1)
+      subtavet(imp1)
 
       filter3D(imp1, gd.getNextNumber, gd.getNextNumber, gd.getNextNumber, gd.getNextChoiceIndex)
 
-      //val imp4 = enhancecont(imp3)
+      if (gd.getNextBoolean) enhancecont(imp1)
+
       imp1.show
-      //new ImagePlus(imp1.getTitle, imp1.getStack).show
+
       val delta = java.lang.System.currentTimeMillis.toDouble - start
       IJ.error(delta + "ms")
     }
@@ -88,11 +90,22 @@ class testscala1_ extends plugin.PlugIn {
 
   private def enhancecont(imp: ImagePlus) = {
     val ce = new CE
-    ce.setNormalize(true)
-    ce.setProcessStack(true)
+    //ce.setNormalize(true)
+    //ce.setProcessStack(true)
+    //ce.equalize(imp)
     ce.stretchHistogram(imp, 0.4)
-    imp.updateAndDraw()
-    IJ.getImage
+    imp.updateAndDraw
+    //IJ.getImage
+  }
+
+  def subtavet(imp: ImagePlus) = {
+    val ZPimg = new ZP(imp)
+    ZPimg.setMethod(ZP.MEDIAN_METHOD)
+    ZPimg.setImage(imp)
+    ZPimg.doProjection
+    val avest = ZPimg.getProjection
+    val ic = new ICAL
+    ic.run("Subtract stack", imp, avest)
   }
 
   //  def(){
