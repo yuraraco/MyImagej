@@ -9,9 +9,10 @@ class enhcont_ {
   val stack = imp.getStack
   val ce = new CE
   //ce.setNormalize(true)
-  //ce.setProcessStack(true)
+  ce.setProcessStack(true)
   //ce.equalize(imp)
   ce.stretchHistogram(imp, 0.4)
+  ce.equalize(imp)
   imp.updateAndDraw
   //imp.show
 }
