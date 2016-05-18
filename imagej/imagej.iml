@@ -7,6 +7,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="scala-sdk-2.12.0-M2" level="project" />
+    <orderEntry type="library" name="scala-sdk-2.12.0-M4" level="project" />
+    <orderEntry type="library" name="javacv-bin" level="application" />
   </component>
 </module>

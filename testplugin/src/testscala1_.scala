@@ -3,11 +3,16 @@
   */
 
 import ij._
-import ij.plugin.{ZProjector => ZP, ContrastEnhancer => CE, Duplicator => DC, Filters3D => F3D, GaussianBlur3D => GB3D, ImageCalculator => ICAL}
+import ij.plugin.{ContrastEnhancer => CE, Duplicator => DC, Filters3D => F3D, GaussianBlur3D => GB3D, ImageCalculator => ICAL, ZProjector => ZP}
 import ij.process.{ImageConverter => ICON}
 import org.bytedeco.javacpp.opencv_core._
+import org.bytedeco.javacpp.opencv_core.IplImage
+import org.bytedeco.javacpp.opencv_imgproc._
 import org.bytedeco.javacpp.opencv_highgui._
 import org.bytedeco.javacpp.opencv_video._
+import org.bytedeco.javacv.OpenCVFrameConverter
+import org.bytedeco.javacpp.opencv_video._
+import org.bytedeco.javacpp.opencv_imgcodecs._
 
 class testscala1_ extends plugin.PlugIn {
   // プラグイン起動時に ImageJ 本体から呼ばれるメソッド．
@@ -15,6 +20,7 @@ class testscala1_ extends plugin.PlugIn {
 
     val gd = new gui.GenericDialog("parms")
     val imp1 = IJ.getImage
+
     gd.addNumericField("rx:", 50.0, 1)
     gd.addNumericField("ry:", 10.0, 1)
     gd.addNumericField("rz:", 5.0, 1)
@@ -106,6 +112,12 @@ class testscala1_ extends plugin.PlugIn {
     }
   }
 
-  //  def(){
-  //   }
+
+  def fcon(imp: ImagePlus) = {
+    val IplC = new OpenCVFrameConverter.ToIplImage
+    val ip = imp.getProcessor
+    val ipb = ip.getBufferedImage
+    val OCVFCon = new OpenCVFrameConverter.ToIplImage
+    val image = OCVFCon(ip)
+     }
 }

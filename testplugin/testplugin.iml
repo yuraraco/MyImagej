@@ -13,13 +13,13 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="file://C:/javacv-1.0-bin/javacv-bin" />
+          <root url="file://C:/javacv-1.2-bin/javacv-bin" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
-        <jarDirectory url="file://C:/javacv-1.0-bin/javacv-bin" recursive="false" />
+        <jarDirectory url="file://C:/javacv-1.2-bin/javacv-bin" recursive="false" />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="scala-sdk-2.12.0-M2" level="application" />
+    <orderEntry type="library" name="scala-sdk-2.12.0-M4" level="project" />
   </component>
 </module>
