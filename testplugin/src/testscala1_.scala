@@ -10,9 +10,11 @@ import org.bytedeco.javacpp.opencv_core.IplImage
 import org.bytedeco.javacpp.opencv_imgproc._
 import org.bytedeco.javacpp.opencv_highgui._
 import org.bytedeco.javacpp.opencv_video._
-import org.bytedeco.javacv.OpenCVFrameConverter
+import org.bytedeco.javacv._
 import org.bytedeco.javacpp.opencv_video._
 import org.bytedeco.javacpp.opencv_imgcodecs._
+
+
 
 class testscala1_ extends plugin.PlugIn {
   // プラグイン起動時に ImageJ 本体から呼ばれるメソッド．
@@ -24,8 +26,10 @@ class testscala1_ extends plugin.PlugIn {
     gd.addNumericField("rx:", 50.0, 1)
     gd.addNumericField("ry:", 10.0, 1)
     gd.addNumericField("rz:", 5.0, 1)
-    gd.addChoice("threshold method:", Array("Default", "Huang", "Intermodes", "IsoData", "Li", "MaxEntropy", "Mean", "MinError(I)", "Minimum", "Moments", "Otsu", "Percentile", "RenyiEntropy", "Shanbhag", "Triangle", "Yen"), "Shanbhag")
-    gd.addChoice("filter method:", Array("MEAN", "MEDIAN", "MIN", "MAX", "VAR", "MAXLOCAL", "GAUSSIAN"), "GAUSSIAN")
+    val tmethod = Array("Default", "Huang", "Intermodes", "IsoData", "Li", "MaxEntropy", "Mean", "MinError(I)", "Minimum", "Moments", "Otsu", "Percentile", "RenyiEntropy", "Shanbhag", "Triangle", "Yen")
+    val fmethod = Array("MEAN", "MEDIAN", "MIN", "MAX", "VAR", "MAXLOCAL", "GAUSSIAN")
+    gd.addChoice("threshold method:", tmethod, "Shanbhag")
+    gd.addChoice("filter method:", fmethod, "GAUSSIAN")
     gd.addCheckbox("create new window", false)
     //gd.addNumericField("slices:", 8.0, 1)
     gd.showDialog
@@ -37,6 +41,7 @@ class testscala1_ extends plugin.PlugIn {
       val start = java.lang.System.currentTimeMillis.toDouble
 
       Gray(imp1)
+      val imp2 = fcon(imp1)
       dellight(imp1, gd.getNextChoice)
       subtavet(imp1)
       filter3D(imp1, gd.getNextNumber, gd.getNextNumber, gd.getNextNumber, gd.getNextChoiceIndex)
@@ -114,10 +119,13 @@ class testscala1_ extends plugin.PlugIn {
 
 
   def fcon(imp: ImagePlus) = {
-    val IplC = new OpenCVFrameConverter.ToIplImage
     val ip = imp.getProcessor
     val ipb = ip.getBufferedImage
-    val OCVFCon = new OpenCVFrameConverter.ToIplImage
-    val image = OCVFCon(ip)
-     }
+    val OCVFC = new OpenCVFrameConverter.ToIplImage
+    val J2DFC = new Java2DFrameConverter
+    val IPlimg = OCVFC.convert(J2DFC.convert(ipb))
+    val frame = new CanvasFrame(imp.getTitle)
+    //return IPlimg
+    cvShowImage("test",IPlimg)
+  }
 }
