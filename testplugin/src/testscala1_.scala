@@ -5,6 +5,7 @@
 import ij._
 import ij.plugin.{ContrastEnhancer => CE, Duplicator => DC, Filters3D => F3D, GaussianBlur3D => GB3D, ImageCalculator => ICAL, ZProjector => ZP}
 import ij.process.{ImageConverter => ICON}
+import ij.plugin.frame.RoiManager
 import org.bytedeco.javacpp.opencv_core._
 import org.bytedeco.javacpp.opencv_core.IplImage
 import org.bytedeco.javacpp.opencv_imgproc._
@@ -15,7 +16,6 @@ import org.bytedeco.javacpp.opencv_video._
 import org.bytedeco.javacpp.opencv_imgcodecs._
 
 
-
 class testscala1_ extends plugin.PlugIn {
   // プラグイン起動時に ImageJ 本体から呼ばれるメソッド．
   def run(arg: String) = {
@@ -23,7 +23,7 @@ class testscala1_ extends plugin.PlugIn {
     val gd = new gui.GenericDialog("parms")
     val imp1 = IJ.getImage
 
-    gd.addNumericField("rx:", 50.0, 1)
+    gd.addNumericField("rx:", 10.0, 1)
     gd.addNumericField("ry:", 10.0, 1)
     gd.addNumericField("rz:", 5.0, 1)
     val tmethod = Array("Default", "Huang", "Intermodes", "IsoData", "Li", "MaxEntropy", "Mean", "MinError(I)", "Minimum", "Moments", "Otsu", "Percentile", "RenyiEntropy", "Shanbhag", "Triangle", "Yen")
@@ -31,7 +31,7 @@ class testscala1_ extends plugin.PlugIn {
     gd.addChoice("threshold method:", tmethod, "Shanbhag")
     gd.addChoice("filter method:", fmethod, "GAUSSIAN")
     gd.addCheckbox("create new window", false)
-    //gd.addNumericField("slices:", 8.0, 1)
+    gd.addNumericField("Number of Rois:", 4.0, 1)
     gd.showDialog
 
     if (!gd.wasCanceled) {
@@ -41,11 +41,12 @@ class testscala1_ extends plugin.PlugIn {
       val start = java.lang.System.currentTimeMillis.toDouble
 
       Gray(imp1)
-      val imp2 = fcon(imp1)
+      //val imp2 = fcon(imp1)
       dellight(imp1, gd.getNextChoice)
       subtavet(imp1)
       filter3D(imp1, gd.getNextNumber, gd.getNextNumber, gd.getNextNumber, gd.getNextChoiceIndex)
       enhancecont(imp1)
+      cint(imp1, gd.getNextNumber)
       imp1.show
 
       val delta = java.lang.System.currentTimeMillis.toDouble - start
@@ -117,15 +118,27 @@ class testscala1_ extends plugin.PlugIn {
     }
   }
 
+  //  def fcon(imp: ImagePlus) = {
+  //    val ip = imp.getProcessor
+  //    val ipb = ip.getBufferedImage
+  //    val OCVFC = new OpenCVFrameConverter.ToIplImage
+  //    val J2DFC = new Java2DFrameConverter
+  //    val IPlimg = OCVFC.convert(J2DFC.convert(ipb))
+  //    val frame = new CanvasFrame(imp.getTitle)
+  //    //return IPlimg
+  //    cvShowImage("test",IPlimg)
+  //  }
 
-  def fcon(imp: ImagePlus) = {
-    val ip = imp.getProcessor
-    val ipb = ip.getBufferedImage
-    val OCVFC = new OpenCVFrameConverter.ToIplImage
-    val J2DFC = new Java2DFrameConverter
-    val IPlimg = OCVFC.convert(J2DFC.convert(ipb))
-    val frame = new CanvasFrame(imp.getTitle)
-    //return IPlimg
-    cvShowImage("test",IPlimg)
+  //ROIを計測する
+  def cint(imp: ImagePlus, n: Double) = {
+    val RW = imp.getWidth / (n toInt)
+    val RH = imp.getHeight / (n toInt)
+    val RM = new RoiManager
+    for (i <- 1 to (n toInt); j <- 1 to (n toInt)) {
+      imp.setRoi(RW * (i - 1), RH * (j - 1), RW, RH)
+      RM.addRoi(imp.getRoi)
+      val Res = RM.multiMeasure(imp)
+      Res.show("results")
+    }
   }
 }
