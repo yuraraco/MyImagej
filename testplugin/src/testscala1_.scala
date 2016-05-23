@@ -31,7 +31,7 @@ class testscala1_ extends plugin.PlugIn {
     gd.addChoice("threshold method:", tmethod, "Shanbhag")
     gd.addChoice("filter method:", fmethod, "GAUSSIAN")
     gd.addCheckbox("create new window", false)
-    gd.addNumericField("Number of Rois:", 4.0, 1)
+    gd.addNumericField("Number of Rois:", 4, 0)
     gd.showDialog
 
     if (!gd.wasCanceled) {
@@ -46,7 +46,7 @@ class testscala1_ extends plugin.PlugIn {
       subtavet(imp1)
       filter3D(imp1, gd.getNextNumber, gd.getNextNumber, gd.getNextNumber, gd.getNextChoiceIndex)
       enhancecont(imp1)
-      cint(imp1, gd.getNextNumber)
+      cint(imp1, gd.getNextNumber toInt)
       imp1.show
 
       val delta = java.lang.System.currentTimeMillis.toDouble - start
@@ -130,15 +130,15 @@ class testscala1_ extends plugin.PlugIn {
   //  }
 
   //ROIを計測する
-  def cint(imp: ImagePlus, n: Double) = {
-    val RW = imp.getWidth / (n toInt)
-    val RH = imp.getHeight / (n toInt)
+  def cint(imp: ImagePlus, n: Int) = {
+    val RW = imp.getWidth / n
+    val RH = imp.getHeight / n
     val RM = new RoiManager
-    for (i <- 1 to (n toInt); j <- 1 to (n toInt)) {
-      imp.setRoi(RW * (i - 1), RH * (j - 1), RW, RH)
+    for (i <- 1 to n ; j <- 1 to n) {
+      imp.setRoi(RW * (j - 1), RH * (i - 1), RW, RH)
       RM.addRoi(imp.getRoi)
-      val Res = RM.multiMeasure(imp)
-      Res.show("results")
     }
+    val Res = RM.multiMeasure(imp)
+    Res.show("results")
   }
 }
