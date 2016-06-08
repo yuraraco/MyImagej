@@ -28,10 +28,11 @@ class testscala1_ extends plugin.PlugIn {
     gd.addNumericField("rz:", 5.0, 1)
     val tmethod = Array("Default", "Huang", "Intermodes", "IsoData", "Li", "MaxEntropy", "Mean", "MinError(I)", "Minimum", "Moments", "Otsu", "Percentile", "RenyiEntropy", "Shanbhag", "Triangle", "Yen")
     val fmethod = Array("MEAN", "MEDIAN", "MIN", "MAX", "VAR", "MAXLOCAL", "GAUSSIAN")
-    gd.addChoice("threshold method:", tmethod, "Shanbhag")
+    gd.addChoice("threshold method:", tmethod, "Otsu")
     gd.addChoice("filter method:", fmethod, "GAUSSIAN")
     gd.addCheckbox("create new window", false)
-    gd.addNumericField("Number of Rois:", 4, 0)
+    gd.addNumericField("Number of Cols:", 1, 0)
+    gd.addNumericField("Number of Rows:", 10, 0)
     gd.showDialog
 
     if (!gd.wasCanceled) {
@@ -44,9 +45,11 @@ class testscala1_ extends plugin.PlugIn {
       //val imp2 = fcon(imp1)
       dellight(imp1, gd.getNextChoice)
       subtavet(imp1)
+      difstack(imp1)
       filter3D(imp1, gd.getNextNumber, gd.getNextNumber, gd.getNextNumber, gd.getNextChoiceIndex)
       enhancecont(imp1)
-      cint(imp1, gd.getNextNumber toInt)
+      cint(imp1, gd.getNextNumber toInt, gd.getNextNumber toInt)
+
       imp1.show
 
       val delta = java.lang.System.currentTimeMillis.toDouble - start
@@ -130,15 +133,25 @@ class testscala1_ extends plugin.PlugIn {
   //  }
 
   //ROIを計測する
-  def cint(imp: ImagePlus, n: Int) = {
-    val RW = imp.getWidth / n
-    val RH = imp.getHeight / n
+  def cint(imp: ImagePlus, c: Int, r: Int) = {
+    val RW = imp.getWidth / c
+    val RH = imp.getHeight / r
     val RM = new RoiManager
-    for (i <- 1 to n ; j <- 1 to n) {
-      imp.setRoi(RW * (j - 1), RH * (i - 1), RW, RH)
+    for (i <- 1 to c ; j <- 1 to r) {
+      imp.setRoi(RW * (i - 1), RH * (j - 1), RW, RH)
       RM.addRoi(imp.getRoi)
     }
     val Res = RM.multiMeasure(imp)
     Res.show("results")
   }
+
+  def difstack(imp: ImagePlus) = {
+    val stack = imp.getStack
+    val imp1 = new DC().run(imp, 2, stack.size)
+    val imp2 = new DC().run(imp, 1, stack.size - 1)
+    val ic = new ICAL
+    val newimp = ic.run("Subtract stack", imp1, imp2)
+    IJ.getImage
+  }
+
 }

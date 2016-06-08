@@ -9,6 +9,7 @@
     <list default="true" id="7eb95efc-ee0d-464d-8f3a-c8b102a5c0f4" name="Default" comment="20160426">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imagej/plugins/Kawasaki_plugins_.jar" afterPath="$PROJECT_DIR$/imagej/plugins/Kawasaki_plugins_.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testplugin/Kawasaki_plugins_.jar" afterPath="$PROJECT_DIR$/testplugin/Kawasaki_plugins_.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testplugin/bin/testscala1_.class" afterPath="$PROJECT_DIR$/testplugin/bin/testscala1_.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testplugin/src/testscala1_.scala" afterPath="$PROJECT_DIR$/testplugin/src/testscala1_.scala" />
     </list>
@@ -35,11 +36,21 @@
       <file leaf-file-name="testscala1_.scala" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/testplugin/src/testscala1_.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="281">
-              <caret line="141" column="23" selection-start-line="141" selection-start-column="23" selection-end-line="141" selection-end-column="23" />
+            <state relative-caret-position="247">
+              <caret line="152" column="40" selection-start-line="152" selection-start-column="40" selection-end-line="152" selection-end-column="40" />
               <folding>
                 <element signature="e#49#60#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="stackthreshold_.scala" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/testplugin/src/stackthreshold_.scala">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -49,9 +60,7 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="187">
               <caret line="12" column="20" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
-              <folding>
-                <element signature="e#1#26#0" expanded="false" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -61,9 +70,7 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="221">
               <caret line="14" column="18" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
-              <folding>
-                <element signature="e#0#12#0" expanded="false" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -120,8 +127,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="639" />
-    <option name="y" value="94" />
+    <option name="x" value="145" />
+    <option name="y" value="207" />
     <option name="width" value="1115" />
     <option name="height" value="822" />
   </component>
@@ -150,12 +157,13 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane">
-        <subPane>
+      <pane id="Scope">
+        <subPane subId="Problems" />
+        <subPane subId="Project Files">
           <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ImageJ" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -194,18 +202,17 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope">
-        <subPane subId="Problems" />
-        <subPane subId="Project Files">
+      <pane id="Scratches" />
+      <pane id="PackagesPane">
+        <subPane>
           <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ImageJ" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -753,6 +760,17 @@
       <workItem from="1463813128710" duration="7257000" />
       <workItem from="1463981222782" duration="1503000" />
       <workItem from="1463985565265" duration="5558000" />
+      <workItem from="1464066235439" duration="3729000" />
+      <workItem from="1464150394345" duration="1788000" />
+      <workItem from="1464235439732" duration="566000" />
+      <workItem from="1464259862901" duration="1690000" />
+      <workItem from="1464320534426" duration="543000" />
+      <workItem from="1464598094545" duration="3310000" />
+      <workItem from="1464762319164" duration="571000" />
+      <workItem from="1464928435887" duration="1303000" />
+      <workItem from="1465191839336" duration="1044000" />
+      <workItem from="1465287950667" duration="4020000" />
+      <workItem from="1465365048338" duration="5318000" />
     </task>
     <task id="LOCAL-00001" summary="2016/04/24">
       <created>1461464659814</created>
@@ -765,7 +783,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="117659000" />
+    <option name="totallyTimeSpent" value="141541000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -777,19 +795,19 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="639" y="94" width="1115" height="822" extended-state="0" />
+    <frame x="145" y="207" width="1115" height="822" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293556" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3265306" sideWeight="0.36822075" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3265306" sideWeight="0.33682206" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3265306" sideWeight="0.58610845" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3265306" sideWeight="0.5918173" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3265306" sideWeight="0.43958136" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3265306" sideWeight="0.37012368" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3265306" sideWeight="0.41389152" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3265306" sideWeight="0.3273073" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3265306" sideWeight="0.40818268" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25880113" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -841,7 +859,6 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/KawasakiPlugin/src/kawasakiscala1_.scala" />
     <entry file="file://$PROJECT_DIR$/KawasakiPlugin/src/Kawasakijava1.java" />
     <entry file="file://$PROJECT_DIR$/KawasakiPlugin/build.xml" />
     <entry file="file://$PROJECT_DIR$/KawasakiPlugin/build.xml" />
@@ -1027,23 +1044,11 @@
       </provider>
     </entry>
     <entry file="jar://C:/javacv-1.0-bin/javacv-bin/opencv.jar!/org/bytedeco/javacpp/opencv_core.class" />
-    <entry file="file://$PROJECT_DIR$/testplugin/src/testscala1_.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="141" column="23" selection-start-line="141" selection-start-column="23" selection-end-line="141" selection-end-column="23" />
-          <folding>
-            <element signature="e#49#60#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/testplugin/src/subtavet_.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="12" column="20" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
-          <folding>
-            <element signature="e#1#26#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1051,8 +1056,24 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="14" column="18" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testplugin/src/stackthreshold_.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testplugin/src/testscala1_.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="152" column="40" selection-start-line="152" selection-start-column="40" selection-end-line="152" selection-end-column="40" />
           <folding>
-            <element signature="e#0#12#0" expanded="false" />
+            <element signature="e#49#60#0" expanded="true" />
           </folding>
         </state>
       </provider>
