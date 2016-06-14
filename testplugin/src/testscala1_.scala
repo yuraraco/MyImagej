@@ -58,11 +58,12 @@ class testscala1_ extends plugin.PlugIn {
   }
 
   // GRAY scaleじゃないなら変換する
-  def Gray(imp: ImagePlus) = {
+  def Gray(imp: ImagePlus): ImagePlus = {
     if (imp.getBitDepth != 8) {
       val ic = new ICON(imp)
       ic.convertToGray8
     }
+    imp
   }
 
   // 細胞体を除去する
