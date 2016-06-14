@@ -27,8 +27,8 @@ class testscala1_ extends plugin.PlugIn {
     gd.addNumericField("ry:", 10.0, 1)
     gd.addNumericField("rz:", 5.0, 1)
     val tmethod = Array("Default", "Huang", "Intermodes", "IsoData", "Li", "MaxEntropy", "Mean", "MinError(I)", "Minimum", "Moments", "Otsu", "Percentile", "RenyiEntropy", "Shanbhag", "Triangle", "Yen")
-    val fmethod = Array("MEAN", "MEDIAN", "MIN", "MAX", "VAR", "MAXLOCAL", "GAUSSIAN")
     gd.addChoice("threshold method:", tmethod, "Otsu")
+    val fmethod = Array("MEAN", "MEDIAN", "MIN", "MAX", "VAR", "MAXLOCAL", "GAUSSIAN")
     gd.addChoice("filter method:", fmethod, "GAUSSIAN")
     gd.addCheckbox("create new window", false)
     gd.addNumericField("Number of Cols:", 1, 0)
@@ -67,7 +67,7 @@ class testscala1_ extends plugin.PlugIn {
   }
 
   // 細胞体を除去する
-  private def dellight(imp: ImagePlus, methods: String) = {
+  private def dellight(imp: ImagePlus, methods: String): ImagePlus = {
     val subtimp = new DC().run(imp)
     val stack = subtimp.getStack()
     for (i <- 1 to subtimp.getStackSize) {
@@ -79,9 +79,9 @@ class testscala1_ extends plugin.PlugIn {
       //subtimp.updateImage
     }
     val ic = new ICAL
-    val newimp = ic.run("Subtract stack", imp, subtimp)
+    ic.run("Subtract stack", imp, subtimp)
     //newimp.show
-    IJ.getImage
+    //IJ.getImage
   }
 
   // 背景を引く
